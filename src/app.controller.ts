@@ -1,4 +1,11 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  Post,
+  HttpStatus,
+} from '@nestjs/common';
 import { AppService } from './app.service';
 import { SampleResponse, ComputeArithmeticResponse } from './interface';
 import { ComputeArithmeticDto } from './dto/app.dto';
@@ -12,6 +19,7 @@ export class AppController {
     return this.appService.getHello();
   }
 
+  @HttpCode(HttpStatus.OK)
   @Post()
   computeArithmetic(
     @Body() dto: ComputeArithmeticDto,
