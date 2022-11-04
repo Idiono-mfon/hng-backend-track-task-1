@@ -1,6 +1,7 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
-import { SampleResponse } from './interface';
+import { SampleResponse, ComputeArithmeticResponse } from './interface';
+import { ComputeArithmeticDto } from './dto/app.dto';
 
 @Controller()
 export class AppController {
@@ -9,5 +10,12 @@ export class AppController {
   @Get()
   getHello(): SampleResponse {
     return this.appService.getHello();
+  }
+
+  @Post()
+  computeArithmetic(
+    @Body() dto: ComputeArithmeticDto,
+  ): ComputeArithmeticResponse {
+    return this.appService.computeOperation(dto);
   }
 }
