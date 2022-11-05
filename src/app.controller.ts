@@ -21,9 +21,9 @@ export class AppController {
 
   @HttpCode(HttpStatus.OK)
   @Post()
-  computeArithmetic(
+  async computeArithmetic(
     @Body() dto: ComputeArithmeticDto,
-  ): ComputeArithmeticResponse {
-    return this.appService.computeOperation(dto);
+  ): Promise<ComputeArithmeticResponse> {
+    return await this.appService.computeOperation(dto);
   }
 }
