@@ -74,7 +74,8 @@ export class AppService {
   }
 
   formatAIResponse(str: string) {
-    const keyword1 = 'answer is';
+    console.log(str);
+    const keyword1 = 'is';
     const keyword2 = '=';
 
     let index = str.search(keyword1);
@@ -89,13 +90,17 @@ export class AppService {
       return this.parser(str, index + keyword2.length);
     }
 
-    return 0;
+    return Number(str) || 0;
   }
 
   parser(str: string, index: number): number {
+    console.log(str);
     const sliceRes = str.slice(index);
+
+    console.log(sliceRes);
     const numRes = Number(sliceRes);
 
+    console.log(numRes);
     return numRes || 0;
   }
 }
